@@ -1,66 +1,90 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import format from './utils/format';
+import Header from './components/Header';
+import WeekdaysColumn from './components/WeekdaysColumn';
+import CalendarDays from './components/CalendarDays';
 
 function App() {
   const [today, setToday] = useState(new Date());
   const [year, setYear] = useState(today.getFullYear());
   const [calendar, setCalendar] = useState({});
   const [locale, setLocale] = useState('en-GB');
+  const [renderMonths, setRenderMonths] = useState([]);
 
   useEffect(() => {
     generateCalendar();
-  }, []);
+    generateHeadings();
+  }, [year, locale]);
 
-  function generateCalendar() {
-    let workingDate = new Date(year, 0, 1);
+  useEffect(() => {
+    calendar[year] && console.log(calendar[year]);
+  }, [calendar]);
 
-    const newCalendar = { ...calendar };
+  function generateHeadings() {
+    const localeMonths = [];
+
+    const workingMonthDate = new Date(year, 0, 1);
 
     for (let i = 0; i < 12; i++) {
-      const month = format(workingDate, locale, 'month');
+      const formattedMonth = format(workingMonthDate, locale, 'month');
 
-      const data = {
-        startingWeekday: format(workingDate, locale, 'weekday'),
-        totalDays: new Date(year, i + 1, 0).getDate(),
-      };
+      localeMonths.push(formattedMonth);
 
-      newCalendar[year] ||= { [month]: data };
-      newCalendar[year][month] = data;
-
-      workingDate.setMonth(workingDate.getMonth() + 1);
+      workingMonthDate.setMonth(workingMonthDate.getMonth() + 1);
     }
 
-    setCalendar({ ...newCalendar });
+    setRenderMonths(localeMonths);
+  }
+
+  function generateCalendar() {
+    const startDate = new Date(year, 0, 1);
+    const endDate = new Date(year, 11, 31);
+
+    const newCalendar = {};
+
+    while (startDate <= endDate) {
+      const month = startDate.getMonth();
+
+      const data = {
+        dayOfMonth: startDate.getDate(),
+        weekday: format(startDate, locale, 'weekday'),
+        month: format(startDate, locale, 'month'),
+        year,
+      };
+
+      newCalendar[year] ||= {};
+      newCalendar[year][month] ||= {
+        totalDays: new Date(year, month + 1, 0).getDate(),
+        firstWeekday: startDate.getDay(),
+        date: [],
+      };
+
+      newCalendar[year][month]['date'].push(data);
+
+      startDate.setDate(startDate.getDate() + 1);
+    }
+
+    setCalendar(newCalendar);
   }
 
   return (
-    <>
-      <div>
-        <h1>Year {year}</h1>
-      </div>
-      <div>
-        {calendar[year] &&
-          Object.keys(calendar[year]).map((keys) => {
-            return (
-              <ol key={`${keys + year}`}>
-                <li>{keys}</li>
-              </ol>
-            );
-          })}
-      </div>
-    </>
+    <main>
+      <Header year={year} />
+
+      {calendar[year] &&
+        renderMonths.map((month, index) => {
+          return (
+            <div className="month-container" key={month + year}>
+              <h2 className="month-title">{month}</h2>
+
+              <WeekdaysColumn locale={locale} />
+              <CalendarDays month={index} year={year} calendar={calendar} />
+            </div>
+          );
+        })}
+    </main>
   );
-}
-
-function format(date, locale, option) {
-  const format = {
-    day: { day: 'numeric' },
-    weekday: { weekday: 'long' },
-    month: { month: 'long' },
-    year: { year: 'numeric' },
-  };
-
-  return date.toLocaleDateString(locale, format[option]);
 }
 
 export default App;
