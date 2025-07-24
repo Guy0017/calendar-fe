@@ -9,14 +9,50 @@
 }
 
 body {
-  background-color: white;
+  background-color: black;
+  color: whitesmoke;
 }
 
-h1 {
-  background-color: red;
+h1,
+h2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.month-container, .month {
-  border: solid black 1px;
+.month-container {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  border: solid whitesmoke 1px;
 }
 
+.wrapper {
+  display: contents;
+}
+
+.month-title {
+  grid-column: 1 / 7 span;
+  margin-bottom: 10px;
+}
+
+
+.blank {
+}
+
+.weekNumberHeading {
+
+}
+
+.weekdayHeading,
+.weekNumberHeading {
+  color: orangered;
+}
+
+.dayNumber {
+  border: solid transparent 1px;
+}
+
+.dayNumber:hover {
+  border-color: whitesmoke;
+}
