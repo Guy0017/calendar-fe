@@ -14,45 +14,65 @@ body {
 }
 
 h1,
+h2,
+h3 {
+  width: 100%;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
 h2 {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+.months-container {
+  display: flex;
+  flex-wrap: wrap;
+  place-content: center;
 }
 
 .month-container {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  margin: 1%;
   display: grid;
-  place-items: center;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(8, 1fr);
-  border: solid whitesmoke 1px;
-}
-
-.wrapper {
-  display: contents;
+  max-width: 100%;
+  min-width: max-content;
+  max-height: 100%;
+  min-height: max-content;
 }
 
 .month-title {
   grid-column: 1 / 7 span;
   margin-bottom: 10px;
-}
-
-
-.blank {
-}
-
-.weekNumberHeading {
-
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .weekdayHeading,
-.weekNumberHeading {
+.dayNumber {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.weekdayHeading {
   color: orangered;
 }
 
 .dayNumber {
   border: solid transparent 1px;
+  border-radius: 5%;
+  place-content: center;
 }
 
 .dayNumber:hover {
-  border-color: whitesmoke;
+  background-color: orangered;
 }

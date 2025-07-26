@@ -10,10 +10,12 @@ function CalendarDays({ month, year, calendar }) {
     setRenderCalendarDays(adjustedCalendarDays[month]['date']);
   }, [month]);
 
-  return renderCalendarDays.map((weekday, index) => {
+  return renderCalendarDays.map((weekday) => {
     return (
       <>
-        <p key={weekday + month + year}>{weekday['dayOfMonth']}</p>
+        <p className="dayNumber" key={weekday + month + year}>
+          {weekday['dayOfMonth']}
+        </p>
       </>
     );
   });
