@@ -72,17 +72,19 @@ function App() {
     <main>
       <Header year={year} />
 
-      {calendar[year] &&
-        renderMonths.map((month, index) => {
-          return (
-            <div className="month-container" key={month + year}>
-              <h2 className="month-title">{month}</h2>
+      <div className="months-container">
+        {calendar[year] &&
+          renderMonths.map((month, index) => {
+            return (
+              <div className="month-container" key={month + year}>
+                <h2 className="month-title">{month}</h2>
 
-              <WeekdaysColumn locale={locale} />
-              <CalendarDays month={index} year={year} calendar={calendar} />
-            </div>
-          );
-        })}
+                <WeekdaysColumn locale={locale} />
+                <CalendarDays month={index} year={year} calendar={calendar} />
+              </div>
+            );
+          })}
+      </div>
     </main>
   );
 }
