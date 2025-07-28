@@ -17,9 +17,7 @@ function App() {
     generateHeadings();
   }, [year, locale]);
 
-  useEffect(() => {
-    calendar[year] && console.log(calendar[year]);
-  }, [calendar]);
+  useEffect(() => {}, [calendar]);
 
   function generateHeadings() {
     const localeMonths = [];
@@ -70,7 +68,7 @@ function App() {
 
   return (
     <main>
-      <Header year={year} />
+      <Header year={year} setYear={setYear} />
 
       <div className="months-container">
         {calendar[year] &&
