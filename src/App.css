@@ -31,14 +31,27 @@ h2 {
   font-size: 1.5rem;
 }
 
-button {
+button, select {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
   font-size: 1rem;
-  max-width: 3rem;
+  max-width: max-content;
   max-height: 2rem;
+}
+
+.button-prev {
+  margin-right: 1rem;
+}
+
+.button-next {
+  margin-left: 1rem;
+}
+
+.button-settings {
+  position: absolute;
+  margin-left: 90%;
 }
 
 .header-container {
@@ -46,6 +59,11 @@ button {
   place-content: center;
   margin-top: 1.5rem;
   place-items: center;
+}
+
+.settings-menu {
+  position: absolute;
+  margin-left: 90%;
 }
 
 .months-container {

@@ -68,7 +68,7 @@ function App() {
 
   return (
     <main>
-      <Header year={year} setYear={setYear} />
+      <Header year={year} setYear={setYear} setLocale={setLocale}/>
 
       <div className="months-container">
         {calendar[year] &&
