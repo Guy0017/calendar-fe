@@ -8,12 +8,14 @@ function UserInputSettings({ setLocale, setDateForm }) {
 
   return (
     <div className="settings-menu">
-      <label htmlFor="language-selection"></label>
+      <label htmlFor="settings-selection"></label>
       <select
         onChange={(e) => handleInput(e.target.value)}
-        id="language-selection"
-        name="language-selection"
+        id="settings-selection"
+        name="settings-selection"
       >
+        <option selected disabled hidden value="">Settings</option>
+          <hr/>
         <optgroup label="Language">
           <option value="en-GB">English</option>
           <option value="zh-CN">Mandarin</option>
@@ -25,6 +27,7 @@ function UserInputSettings({ setLocale, setDateForm }) {
           <option value="ru">Russian</option>
           <option value="hi">Hindi</option>
         </optgroup>
+          <hr/>
         <optgroup label="Format">
           <option value="long">Long</option>
           <option value="short">Short</option>
