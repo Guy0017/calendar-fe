@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import LocaleInput from './LocaleInput';
+import UserInputSettings from './UserInputSettings';
 
-function Header({ year, setYear, setLocale }) {
+function Header({ year, setYear, setLocale, setDateForm }) {
   useEffect(() => {}, [year]);
 
   const header = `Calender Year ${year}`;
@@ -19,7 +19,7 @@ function Header({ year, setYear, setLocale }) {
           Next
         </button>
 
-        <LocaleInput setLocale={setLocale} />
+        <UserInputSettings setLocale={setLocale} setDateForm={setDateForm} />
       </div>
     </>
   );

@@ -11,6 +11,7 @@ function App() {
   const [calendar, setCalendar] = useState({});
   const [locale, setLocale] = useState('en-GB');
   const [renderMonths, setRenderMonths] = useState([]);
+  const [dateFrom, setDateForm] = useState('long');
 
   useEffect(() => {
     generateCalendar();
@@ -68,7 +69,12 @@ function App() {
 
   return (
     <main>
-      <Header year={year} setYear={setYear} setLocale={setLocale} />
+      <Header
+        year={year}
+        setYear={setYear}
+        setLocale={setLocale}
+        setDateForm={setDateForm}
+      />
 
       <div className="months-container">
         {calendar[year] &&
@@ -77,7 +83,7 @@ function App() {
               <div className="month-container" key={month + year}>
                 <h2 className="month-title">{month}</h2>
 
-                <WeekdaysColumn locale={locale} />
+                <WeekdaysColumn locale={locale} dateFrom={dateFrom} />
                 <CalendarDays month={index} year={year} calendar={calendar} />
               </div>
             );

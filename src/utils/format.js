@@ -1,7 +1,7 @@
-function format(date, locale, option) {
+function format(date, locale, option, dateForm) {
   const format = {
     day: { day: 'numeric' },
-    weekday: { weekday: 'long' },
+    weekday: { weekday: dateForm },
     month: { month: 'long' },
     year: { year: 'numeric' },
   };
