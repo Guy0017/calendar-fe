@@ -106,3 +106,7 @@ button, select {
 .dayNumber:hover {
   background-color: orangered;
 }
+
+.today {
+  background-color: orangered;
+}

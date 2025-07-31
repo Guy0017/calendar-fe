@@ -84,7 +84,7 @@ function App() {
                 <h2 className="month-title">{month}</h2>
 
                 <WeekdaysColumn locale={locale} dateFrom={dateFrom} />
-                <CalendarDays month={index} year={year} calendar={calendar} />
+                <CalendarDays month={index} year={year} calendar={calendar} today={today}/>
               </div>
             );
           })}

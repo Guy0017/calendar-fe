@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import renderAdjustment from '../utils/renderAdjustment';
 
-function CalendarDays({ month, year, calendar }) {
+function CalendarDays({ month, year, calendar, today }) {
   const [renderCalendarDays, setRenderCalendarDays] = useState([]);
 
   useEffect(() => {
@@ -11,9 +11,17 @@ function CalendarDays({ month, year, calendar }) {
   }, [month]);
 
   return renderCalendarDays.map((weekday) => {
+    const presentDay =
+      year === today.getFullYear() &&
+      month === today.getMonth() &&
+      weekday.dayOfMonth === today.getDate();
+
     return (
       <>
-        <p className="dayNumber" key={weekday + month + year}>
+        <p
+          className={`dayNumber ${presentDay && 'today'}`}
+          key={weekday + month + year}
+        >
           {weekday['dayOfMonth']}
         </p>
       </>
