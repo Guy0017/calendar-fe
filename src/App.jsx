@@ -47,8 +47,8 @@ function App() {
 
       const data = {
         dayOfMonth: startDate.getDate(),
-        weekday: format(startDate, locale, 'weekday'),
-        month: format(startDate, locale, 'month'),
+        weekday: format(startDate, locale, 'weekday', dateFrom),
+        month: format(startDate, locale, 'month', dateFrom),
         year,
       };
 

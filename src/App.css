@@ -31,7 +31,8 @@ h2 {
   font-size: 1.5rem;
 }
 
-button, select {
+button,
+select {
   display: flex;
   align-items: center;
   justify-content: center;
