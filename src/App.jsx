@@ -11,7 +11,7 @@ function App() {
   const [calendar, setCalendar] = useState({});
   const [locale, setLocale] = useState('en-GB');
   const [renderMonths, setRenderMonths] = useState([]);
-  const [dateFrom, setDateForm] = useState('long');
+  const [dateFrom, setDateForm] = useState('short');
 
   useEffect(() => {
     generateCalendar();
@@ -84,7 +84,12 @@ function App() {
                 <h2 className="month-title">{month}</h2>
 
                 <WeekdaysColumn locale={locale} dateFrom={dateFrom} />
-                <CalendarDays month={index} year={year} calendar={calendar} today={today}/>
+                <CalendarDays
+                  month={index}
+                  year={year}
+                  calendar={calendar}
+                  today={today}
+                />
               </div>
             );
           })}

@@ -15,7 +15,6 @@ function CalendarDays({ month, year, calendar, today }) {
       year === today.getFullYear() &&
       month === today.getMonth() &&
       weekday.dayOfMonth === today.getDate();
-     presentDay && console.log(weekday)
     return (
       <>
         <p
